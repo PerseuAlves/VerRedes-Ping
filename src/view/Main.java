@@ -13,7 +13,7 @@ public class Main {
 		
 		int Opc = 0;
         while (Opc != 9){
-            Opc = Integer.parseInt(JOptionPane.showInputDialog("\n      Atividade 1 \n 1 – ip \n 2 – ping \n 9 - sair"));
+            Opc = Integer.parseInt(JOptionPane.showInputDialog("\n      Atividade 1 \n 1 ï¿½ ip \n 2 ï¿½ ping \n 9 - sair"));
             switch (Opc){
                 case 1:
                 	Control.ip(so);

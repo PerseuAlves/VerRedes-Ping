@@ -159,7 +159,6 @@ public class RedesController {
 							System.out.println(IpNome);
 							y++;
 						}
-						i++;
 					}
 				}
 				
@@ -172,10 +171,10 @@ public class RedesController {
 					for (String Ip : vetorIp) {
 						if (sim == 1) {
 							System.out.println(Ip);
+							sim = 0;
 						} else if (Ip.contains("inet")) {
 							sim = 1;
 						}
-						i++;
 					}
 				}
 ///////////	Fim da segunda chamada do processo ip ////////////////////////////////

@@ -187,42 +187,82 @@ public class RedesController {
 	}
 	
 	public void ping(String so) {
-
-		try {
-			int i = 0;
-			int y = 0;
+		
+		if (so.contains("Win")) {
+			try {
+				int i = 0;
+				int y = 0;
 // var[]	String vet[] = new String[];
-			Process p = Runtime.getRuntime().exec("PING -n 10 www.google.com.br");
-			InputStream fluxo = p.getInputStream();
-			InputStreamReader leitor = new InputStreamReader(fluxo);
-			BufferedReader buffer = new BufferedReader(leitor);
-			String linha = buffer.readLine();
-			while (linha != null) {
-				//System.out.println(linha);
-				linha = buffer.readLine();
-				if (linha.contains("dia")) {
-					String[] vetorMS = linha.split(" ");
-					for (String MS : vetorMS) {
-						i++;
-					}
-					y = i;
-					i = 0;
-					String[] vetorMS2 = linha.split(" ");
-					for (String MS2 : vetorMS2) {
-						i++;
-						if (i == y) {
-							System.out.println(MS2);
+				Process p = Runtime.getRuntime().exec("PING -n 10 www.google.com.br");
+				InputStream fluxo = p.getInputStream();
+				InputStreamReader leitor = new InputStreamReader(fluxo);
+				BufferedReader buffer = new BufferedReader(leitor);
+				String linha = buffer.readLine();
+				while (linha != null) {
+					// System.out.println(linha);
+					linha = buffer.readLine();
+					if (linha.contains("dia")) {
+						String[] vetorMS = linha.split(" ");
+						for (String MS : vetorMS) {
+							i++;
 						}
+						y = i;
+						i = 0;
+						String[] vetorMS2 = linha.split(" ");
+						for (String MS2 : vetorMS2) {
+							i++;
+							if (i == y) {
+								System.out.println(MS2);
+							}
+						}
+						linha = null;
 					}
-					linha = null;
 				}
+				buffer.close();
+				leitor.close();
+				fluxo.close();
+			} catch (Exception e) {
+				String msgError = e.getMessage();
+				System.err.println(msgError);
 			}
-			buffer.close();
-			leitor.close();
-			fluxo.close();
-		} catch (Exception e) {
-			String msgError = e.getMessage();
-			System.err.println(msgError);
+		} else if(so.contains("Lin")) {
+			try {
+				int i = 0;
+				int y = 0;
+				int sim = 0;
+// var[]	String vet[] = new String[];
+				Process p = Runtime.getRuntime().exec("ping -c 10 www.google.com.br");
+				InputStream fluxo = p.getInputStream();
+				InputStreamReader leitor = new InputStreamReader(fluxo);
+				BufferedReader buffer = new BufferedReader(leitor);
+				String linha = buffer.readLine();
+				while (linha != null) {
+					// System.out.println(linha);
+					linha = buffer.readLine();
+					if (linha.contains("mdev")) {
+						String[] vetorMS = linha.split("/");
+						for (String MS : vetorMS) {
+							if (i == 4) {
+								System.out.println(MS + " ms");
+							}
+							i++;
+						}
+						
+						linha = null;
+					}
+					if ((linha == null) & (sim == 0)) {
+						linha = buffer.readLine();
+						sim++;
+					}
+					
+				}
+				buffer.close();
+				leitor.close();
+				fluxo.close();
+			} catch (Exception e) {
+				String msgError = e.getMessage();
+				System.err.println(msgError);
+			}
 		}
 	}
 }

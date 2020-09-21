@@ -5,15 +5,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class RedesController {
-	
+
 	public RedesController() {
 		super();
 	}
-	
+
 	public void ip(String so) {
-		
+
 /////////// Windows //////////////////////////////////////////////////////////////
-		
+
 		if (so.contains("Win")) {
 			try {
 				int i = 0;
@@ -89,9 +89,9 @@ public class RedesController {
 				String msgError = e.getMessage();
 				System.err.println(msgError);
 			}
-			
+
 ///////////	Linux ////////////////////////////////////////////////////////////////		
-			
+
 		} else if (so.contains("Lin")) {
 			try {
 				int i = 0;
@@ -150,23 +150,23 @@ public class RedesController {
 				buffer2.close();
 				leitor2.close();
 				fluxo2.close();
-				
-				for (i=0; i<ips; i++) {
+
+				for (i = 0; i < ips; i++) {
 					y = 0;
 					String[] vetorNome = Nome[i].split(" ");
 					for (String IpNome : vetorNome) {
-						if(y == 0) {
+						if (y == 0) {
 							System.out.println(IpNome);
 							y++;
 						}
 					}
 				}
-				
+
 				System.out.println(" ");
 				System.out.println("ipv4 respectivos: ");
 				System.out.println(" ");
-				
-				for (i=0; i<ips; i++) {
+
+				for (i = 0; i < ips; i++) {
 					String[] vetorIp = ip[i].split(" ");
 					for (String Ip : vetorIp) {
 						if (sim == 1) {
@@ -185,9 +185,9 @@ public class RedesController {
 			}
 		}
 	}
-	
+
 	public void ping(String so) {
-		
+
 		if (so.contains("Win")) {
 			try {
 				int i = 0;
@@ -225,7 +225,7 @@ public class RedesController {
 				String msgError = e.getMessage();
 				System.err.println(msgError);
 			}
-		} else if(so.contains("Lin")) {
+		} else if (so.contains("Lin")) {
 			try {
 				int i = 0;
 				int y = 0;
@@ -247,14 +247,14 @@ public class RedesController {
 							}
 							i++;
 						}
-						
+
 						linha = null;
 					}
 					if ((linha == null) & (sim == 0)) {
 						linha = buffer.readLine();
 						sim++;
 					}
-					
+
 				}
 				buffer.close();
 				leitor.close();
@@ -266,4 +266,3 @@ public class RedesController {
 		}
 	}
 }
-
